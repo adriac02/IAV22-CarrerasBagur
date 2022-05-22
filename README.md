@@ -35,3 +35,25 @@ clase IA:
   void sendReply(string) //Manda la respuesta al gameManager para que este se la mande al jugador
   void Update() //Teniendo en cuenta el registro de los mensajes y lo que se haya guardado en el gameManager, hacer que por ejemplo evite una zona del mapa
   void insertBG(string[]) //Insertar a la IA una historia de fondo para que el personaje esté realmente metido en el juego y que sepa qué hace ahí y quién es, para crear un rol realista
+  ```
+
+  ## Memoria API
+  Al empezar con el proyecto me he encontrado con muchísimos problemas que me han retrasado en las demás tareas que tenía planteadas.
+
+  Para empezar he descubierto que la API de OpenAI de GPT3, pese a ser una API abierta, es de pago, he hecho lo que he podido con las herramientas que tenía y lo he conseguido implementar funcionalmente.
+
+  Para conseguir esto empecé a pelearme con NuGet, un administrador de paquetes para .NET que jamás había utilizado, aunque me parece muy poderoso. Instalé un paquete que implementaba NuGet en Unity (https://github.com/GlitchEnzo/NuGetForUnity). Aunque este no dió muy buenos resultados.
+
+  Al principio todo fueron conflictos entre versiones de los diferentes paquetes que tenía que utilizar, además el paquete de NuGet para Unity duplicaba algunos archivos y hacía que estos quedaran inservibles.
+
+  Al final descubrí que podía añadir manualmente las librerías sin necesitar un instalador de paquetes ni nada parecido.
+
+  Seguí más o menos este tutorial (https://unitycoder.com/blog/2022/02/05/using-open-ai-gpt-3-api-in-unity/) realizando los cambios que veía necesarios relativos a librerías y versiones, y al final conseguí una IA que completaba el texto que le insertaba.
+
+## Memoria Escena
+
+Empecé una escena vacía y añadí un Trigger que simulaba al personaje con la IA, que te permitía interactuar con él solo cuando estabas dentro de su rango.
+
+Además implementé un jugador simple que se puede mover en todas direcciones con un controlador sencillo.
+
+Lo más interesante del jugador es la capacidad de poder introducir texto dirigido a la IA mediante un TextField en el canvas.

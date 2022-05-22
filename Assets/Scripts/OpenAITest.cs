@@ -16,7 +16,18 @@ public class OpenAITest : MonoBehaviour
     {
         Debug.Log("Running");
 
-        var api = new OpenAI_API.OpenAIAPI("sk - 3R56KcFUFrIdtnE9bGKiT3BlbkFJjFad0wJygF79tykDSDdW", Engine.Davinci);
+        try
+        {
+
+
+            //var api = new OpenAI_API.OpenAIAPI("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", Engine.Curie);
+            //var result = await api.Completions.CreateCompletionAsync("My name is", temperature: 0.1);
+            //Debug.Log("I love=" + result.ToString());
+        }
+        catch(System.Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
 
     }
     // Update is called once per frame
