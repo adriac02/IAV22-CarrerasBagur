@@ -21,8 +21,8 @@ public class OpenAITest : MonoBehaviour
 
 
             //var api = new OpenAI_API.OpenAIAPI("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", Engine.Curie);
-            //var result = await api.Completions.CreateCompletionAsync("My name is", temperature: 0.1);
-            //Debug.Log("I love=" + result.ToString());
+            //var result = await api.Completions.CreateCompletionAsync("How are you boy?\n", temperature: 0.1);
+            //Debug.Log("=" + result.ToString());
         }
         catch(System.Exception e)
         {

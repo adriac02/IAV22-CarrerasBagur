@@ -49,6 +49,7 @@ clase IA:
   Al final descubrí que podía añadir manualmente las librerías sin necesitar un instalador de paquetes ni nada parecido.
 
   Seguí más o menos este tutorial (https://unitycoder.com/blog/2022/02/05/using-open-ai-gpt-3-api-in-unity/) realizando los cambios que veía necesarios relativos a librerías y versiones, y al final conseguí una IA que completaba el texto que le insertaba.
+  
 
 ## Memoria Escena
 
@@ -57,3 +58,32 @@ Empecé una escena vacía y añadí un Trigger que simulaba al personaje con la 
 Además implementé un jugador simple que se puede mover en todas direcciones con un controlador sencillo.
 
 Lo más interesante del jugador es la capacidad de poder introducir texto dirigido a la IA mediante un TextField en el canvas.
+
+# IMPORTANTE SOBRE MI PROYECTO CON GPT3
+## Fine-Tuning
+La idea inicial que tuve fue entrenar a la IA pasándole varios strings con los que entendía su background, su personalidad etc.
+
+Me he encontrado con muchos problemas por el camino, pero conseguí crear un nuevo motor basado en Curie (uno de los motores base de GPT3), pero este no es compatible con la SDK que estoy utilizando para Unity, así que voy a hacer un video a parte probando ese modelo en la misma página de OpenAI donde sí funciona.
+
+Es un modelo que creé con la finalidad de realizar diálogos de película western, para ello lo entrené con el guion de la película "Los Odiosos Ocho" de Quentin Tarantino.
+
+![Training](imgs/training.png)
+
+Después de crear el JSONL de todo el guión, utilizé el Command-Line de OpenAI para crear un archivo de entrenamiento para un modelo que pudiera entender GPT-3.
+
+![Training_Preparation](imgs/training_prepared.png)
+
+A partir de aquí seguí usando la Command-Line para finalmente crear el motor curie:ft-personal:tarantain-2022-05-23-01-10-42
+
+![Engine](imgs/engine.png)
+
+A partir de aquí puedo hablar con el bot perfectamente, como un chatbot refinado al extremo con temática Western, aunque realmente ya sabiendo cómo se hace, es cuestión de encontrar una database mayor para refinarlo hacia donde se desee.
+
+![WesternChat](imgs/WesternChat.png)
+
+También puede generar él solo un guión de película Western.
+
+![WesternScript](imgs/WesternScript.png)
+
+El mismo OpenAI nos avisa de que contiene contenido sensible, ya que la película con la que ha sido entrenado el motor tiene diálogos con este estilo de palabras.
+
