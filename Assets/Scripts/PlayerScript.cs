@@ -57,6 +57,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.GetComponentInParent<OpenAITest>() != null)
         {
+            GameManager.Instance.setAI(other.GetComponentInParent<OpenAITest>());
             Debug.Log("Entrado");
             talk = true;
         }

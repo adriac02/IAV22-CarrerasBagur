@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
+using TMPro;
 
 public class OpenAITest : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class OpenAITest : MonoBehaviour
     public float TEMPERATURE;
     Queue<string> logs = new Queue<string>();
     public string[] stop;
+    public string BACKSTORY;
+
+    TextMeshPro textm;
     
 
     // Start is called before the first frame update
     OpenAIAPI api;
     void Start()
     {
+        textm = GetComponentInChildren<TextMeshPro>();
         var task = StartAsync();
     }
     async Task StartAsync()
@@ -44,7 +49,7 @@ public class OpenAITest : MonoBehaviour
     {
         try
         {
-            string prompt = "";
+            string prompt = BACKSTORY;
             foreach (string st in logs)
             {
                 prompt += st;
@@ -57,7 +62,9 @@ public class OpenAITest : MonoBehaviour
                 logs.Dequeue();
             }
             logs.Enqueue(result.ToString());
+            string newString = result.ToString().TrimEnd('\n');
 
+            textm.text = newString;
             Debug.Log(result.ToString());
         }
         catch(System.Exception e){
@@ -69,8 +76,12 @@ public class OpenAITest : MonoBehaviour
     {
         try
         {
-            var result = await api.Completions.CreateCompletionAsync(s, max_tokens: 256, temperature: TEMPERATURE, stopSequences: stop);
+            string prompt = BACKSTORY + s;
+            var result = await api.Completions.CreateCompletionAsync(prompt, max_tokens: 256, temperature: TEMPERATURE, stopSequences: stop);
 
+            string newString = result.ToString().TrimEnd('\n');
+
+            textm.text = newString;
             Debug.Log(result.ToString());
         }
         catch (System.Exception e)
