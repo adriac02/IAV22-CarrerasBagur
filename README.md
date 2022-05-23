@@ -171,3 +171,8 @@ También puede generar él solo un guión de película Western.
 
 El mismo OpenAI nos avisa de que contiene contenido sensible, ya que la película con la que ha sido entrenado el motor tiene diálogos con este estilo de palabras.
 
+## Vídeos
+
+Vídeo del Proyecto Final: https://youtu.be/cE7LXTUWKKk
+
+Vídeo del modelo entrenado por mí: https://youtu.be/9pnBGgKKvBo ``(Este vídeo dura algo más de tres minutos porque a mi parecer es algo a parte del Proyecto Final)``
