@@ -7,8 +7,12 @@ public class PlayerScript : MonoBehaviour
 {
     public InputField inputField;
     Rigidbody rb;
+    FirstPersonMovement fpm;
+    Jump jump;
+    Crouch crouch;
 
     bool talk = false;
+    bool isTalking = false;
 
     private void Awake()
     {
@@ -18,6 +22,9 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        fpm = GetComponent<FirstPersonMovement>();
+        jump = GetComponent<Jump>();
+        crouch = GetComponent<Crouch>();
     }
 
     // Update is called once per frame
@@ -27,7 +34,22 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                inputField.Select();
+                if (isTalking)
+                {
+                    isTalking = false;
+                    inputField.text = "";
+                    fpm.enabled = true;
+                    jump.enabled = true;
+                    crouch.enabled = true;
+                }
+                else
+                {
+                    isTalking = true;
+                    fpm.enabled = false;
+                    jump.enabled = false;
+                    crouch.enabled = false;
+                    inputField.Select();
+                }
             }
         }
     }
