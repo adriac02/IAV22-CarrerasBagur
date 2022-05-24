@@ -50,7 +50,7 @@ Al final descubrí que podía añadir manualmente las librerías sin necesitar u
 
 Seguí más o menos este tutorial (https://unitycoder.com/blog/2022/02/05/using-open-ai-gpt-3-api-in-unity/) realizando los cambios que veía necesarios relativos a librerías y versiones, y al final conseguí una IA que completaba el texto que le insertaba.
 
-### Uso final de la api
+### Uso final de la api (Apartado de funcionalidad con IA)
 
 `IMPORTANTE: Dado que la API, pese a ser abierta tiene un coste monetario, he conseguido una clave que dejo puesta en el código, esa clave es personal y tiene un límite de operaciones, que se gastan con cada entrada. Por lo que pido por favor el buen uso de ella.`
 
@@ -62,7 +62,7 @@ Además he utilizado paquetes de threading para crear las respuestas, que no que
 
 ```
 clase IA:
-  a{
+  parametros{
     USARMEMORIA
     TEMPERATURA
     HISTORIA
@@ -78,7 +78,7 @@ clase IA:
 
   ResponderConMemoria{ //No es necesario pasarle un string porque usa la memoria
     string pregunta = HISTORIA + MEMORIA
-    string respuesta = api.CreateCompletion(pregunta,a)
+    string respuesta = api.CreateCompletion(pregunta,parametros)
     ActualizaTexto(respuesta)
   }
   
@@ -107,7 +107,7 @@ Los parámetros que utiliza la API de manera más concreta son:
 
 Los mayores problemas que me ha dado la API es a la hora de usar el registro de mensajes con memoria, es muy propensa a provocar bucles sobre todo usando una temperatura baja.
 
-## Memoria Escena
+## Memoria Escena (Apartado de funcionalidad del juego)
 
 Empecé una escena vacía y añadí un Trigger que simulaba al personaje con la IA, que te permitía interactuar con él solo cuando estabas dentro de su rango.
 
@@ -117,7 +117,7 @@ Lo más interesante del jugador es la capacidad de poder introducir texto dirigi
 
 Ha sido añadido una pequeña decoración para amenizar la experiencia en el proyecto, los modelos de los personajes los he hecho yo mismo y lo modelos de árboles y follaje son de sketchfab.
 
-### Personaje 1 (Dios)
+### Personaje 1 (Dios, apartado IA 1)
 
 El primer personaje y con el que empecé la IA, es decir con el que más he estado trabajando es el que se encuentra a tu derecha al empezar.
 
@@ -130,7 +130,7 @@ Tras interactuar bastante con él he visto que tiene respuestas bastante curiosa
 
 El personaje puede elegir quedarse callado o puedes obligarle a iniciar él mismo una interacción si no escribes nada en el campo de Input.
 
-### Personaje 2 (Mariposa)
+### Personaje 2 (Mariposa, apartado IA 2)
 
 Este es el segundo personaje, con el que he interactuado en menor medida, pero que suele tener respuestas más sencillas y coherentes a la hora de hablar. La única diferencia que tiene con el otro personaje es la historia de fondo que se le pasa, siendo esta:
 
@@ -144,7 +144,7 @@ Este es el segundo personaje, con el que he interactuado en menor medida, pero q
 Aún así sigue el principio que buscaba, de que cada vez que lo juegues tenga una respuesta distinta, sin tener que hacer un larguísimo diccionario o necesitar del mejor guion.
 
 # IMPORTANTE SOBRE MI PROYECTO CON GPT3
-## Fine-Tuning
+## Fine-Tuning (Apartado de entrenamiento de la IA)
 La idea inicial que tuve fue entrenar a la IA pasándole varios strings con los que entendía su background, su personalidad etc.
 
 Me he encontrado con muchos problemas por el camino, pero conseguí crear un nuevo motor basado en Curie (uno de los motores base de GPT3), pero este no es compatible con la SDK que estoy utilizando para Unity, así que voy a hacer un video a parte probando ese modelo en la misma página de OpenAI donde sí funciona.
@@ -171,7 +171,7 @@ También puede generar él solo un guión de película Western.
 
 El mismo OpenAI nos avisa de que contiene contenido sensible, ya que la película con la que ha sido entrenado el motor tiene diálogos con este estilo de palabras.
 
-## Vídeos
+## Vídeos (Apartado banco de pruebas)
 
 Vídeo del Proyecto Final: https://youtu.be/cE7LXTUWKKk
 
